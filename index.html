@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="main.css">
+
+        <!-- JS -->
+        <script src="script.js" async></script>
+    </head>
+
+    <body>
+        <header class="nav">
+            <input type="text" required="" placeholder="Search" autocomplete="off">
+
+            <nav>
+                <ul>
+                    <li><a href="#shop">Shop</a></li>
+                    <h2>MoLux</h2>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <button id="toggleMode" class="button-2">🌙</button>
+
+                <div class="dialog-container">
+                    <dialog>
+                        <button autofocus id="closeCart">Close</button>
+                        <p>This is a dialog</p>
+                    </dialog>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="hero-container">
+                <img src="images/hero.webp" alt="Modern clothing store hero image">
+
+                <div class="hero-content">
+                    <h1>Modern Luxury</h1>
+                    <p>Shop the latest trends in fashion</p>
+                </div>
+            </div>
+
+            <section id="shop">
+                <h2>Latest Trends</h2>
+
+                <div id="products" class="product-container"></div>
+            </section>
+
+            <section>
+                <h2>Your Cart</h2>
+
+                <div id="cart" class="cart-container">
+                    <p id="emptyPlaceholder">Your cart is empty</p>
+                </div>
+
+                <div id="total" class="total-container">
+                    <p>Total: $<span id="totalCount">0.00</span></p>
+                </div>
+                <button id="checkout" class="button-2">Checkout</button>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Us</h2>
+
+                <div class="contact-container">
+                    <div class="side"></div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Comments</label>
+                            <textarea id="comments" name="comments" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Method</label>
+                            <label><input type="radio" name="contactMethod" value="email" checked> Email</label>
+                            <label><input type="radio" name="contactMethod" value="phone"> Phone</label>
+                        </div>
+                        <button type="submit" class="button-2">Submit</button>
+                    </form>
+                </div>
+                <div id="formMessage"></div>
+
+            </section>
+        </main>
+
+        <footer>
+            <small>&copy; 2024 MoLux</small>
+            <br>
+            <small>All rights reserved</small>
+        </footer>
+
+        <div id="toastContainer" class="toast-container"></div>
+    </body>
+
+</html>
