@@ -341,7 +341,7 @@ img {
 }
 
 .contact-container .side {
-    background: url('/images/hero.webp') no-repeat center center;
+    background: url('./images/hero.webp') no-repeat center center;
     background-size: cover;
     border-radius: 30px;
 }
