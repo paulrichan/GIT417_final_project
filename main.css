@@ -61,12 +61,10 @@ h1 {
 .hero-content {
     color: #fff;
     font-family: 'Playwrite CO', cursive;
-    font-optical-sizing: auto;
 }
 
 .hero-content p {
     font-family: 'Playwrite NG Modern', cursive;
-    font-optical-sizing: auto;
 }
 
 .toast-container {
@@ -89,7 +87,7 @@ h1 {
     padding: 16px;
     font-size: 17px;
     transition: visibility 0s, opacity 0.5s linear;
-    drop-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.4));
 }
 
 .toast.show {
@@ -109,13 +107,11 @@ h1 {
 
 section h2 {
     font-family: 'Playwrite NG Modern', cursive;
-    font-optical-sizing: auto;
     margin-bottom: 20px;
 }
 
 h3 {
     font-family: 'Playwrite NG Modern', cursive;
-    font-optical-sizing: auto;
 }
 
 input {
@@ -151,9 +147,9 @@ a:hover {
     text-decoration: underline;
 }
 
-nav h2 {
+nav ul li:nth-child(2) {
     font-family: 'Playwrite NG Modern', cursive;
-    font-optical-sizing: auto;
+    font-size: 24px;
 }
 
 .button-2 {
