@@ -285,20 +285,20 @@ function validateForm() {
         removeError(lastNameInput);
     }
 
-    if (emailInput.value === '') {
+    if (emailInput.value === '' && contactMethod[0].checked) {
         showError(emailInput, 'Email is required');
         isValid = false;
-    } else if (!validateEmail(emailInput.value)) {
+    } else if (!validateEmail(emailInput.value) && contactMethod[0].checked) {
         showError(emailInput, 'Please enter a valid email address');
         isValid = false;
     } else {
         removeError(emailInput);
     }
 
-    if (phoneInput.value === '') {
+    if (phoneInput.value === '' && contactMethod[1].checked) {
         showError(phoneInput, 'Phone number is required');
         isValid = false;
-    } else if (!validatePhone(phoneInput.value)) {
+    } else if (!validatePhone(phoneInput.value) && contactMethod[1].checked) {
         showError(phoneInput, 'Please enter a valid phone number');
         isValid = false;
     } else {
