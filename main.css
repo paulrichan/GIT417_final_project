@@ -41,7 +41,7 @@ body.dark-mode .product-container {
     background: #52575D;
 }
 
-body.dark-mode input {
+body.dark-mode input, body.dark-mode textarea {
     background: #52575D;
     color: var(--text-color-dark);
 }
@@ -123,6 +123,14 @@ input {
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,0.2);
     max-width: 200px;
+}
+
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    max-width: 100%;
+
 }
 
 form input {
@@ -310,8 +318,7 @@ img {
 
 .total-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     gap: 20px;
 }
 

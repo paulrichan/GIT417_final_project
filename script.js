@@ -19,9 +19,16 @@ toggleLightDark.addEventListener('click', () => {
  */
 const cart = document.getElementById('cart');
 const totalCount = document.getElementById('totalCount');
+const tax = document.getElementById('tax');
+const shipping = document.getElementById('shipping');
 const emptyCart = document.createElement('p');
 emptyCart.id = 'emptyPlaceholder';
 emptyCart.innerText = 'Your cart is empty.';
+
+const shippingCost = 5.00;
+const taxRate = 0.1;
+
+const shoppingCart = [];
 
 /**
  * Add products to the cart
@@ -35,7 +42,7 @@ function addToCart(productId) {
 
     const product = products[productId];
 
-    totalCount.innerText = (parseFloat(totalCount.innerText) + product.price).toFixed(2);
+    // totalCount.innerText = (parseFloat(product.price) + parseFloat(totalCount.innerText)).toFixed(2);
 
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart-item');
@@ -85,9 +92,12 @@ const checkoutButton = document.getElementById('checkout');
 checkoutButton.addEventListener('click', () => {
     if (cart.children.length > 0 && cart.children[0].id !== 'emptyPlaceholder') {
         console.log(cart.children);
-        showToast('Thank you for your purchase!');
+        showToast(`Thank you for your purchase of ${shoppingCart.length} item${shoppingCart.length > 1 ? 's' : ''} for $${totalCount.innerText}!`);
         cart.innerHTML = '';
         totalCount.innerText = '0.00';
+        tax.innerHTML = ''
+        shipping.innerHTML = ''
+        shoppingCart.length = 0;
 
         cart.appendChild(emptyCart);
     } else {
@@ -165,6 +175,21 @@ products.forEach(product => {
     addToCartButton.innerText = 'Add to Cart';
     addToCartButton.addEventListener('click', () => {
         addToCart(products.indexOf(product));
+
+        shoppingCart.push(product);
+
+        const totals = shoppingCart.reduce((acc, item) => {
+            acc.total += item.price;
+            acc.tax = acc.total * taxRate;
+            acc.shipping = acc.shipping === 0 ? shippingCost : acc.shipping;
+
+            return acc;
+        }, { total: 0, tax: 0, shipping: 0 });
+
+        totalCount.innerText = (parseFloat(totals.total) + parseFloat(totals.tax) + parseFloat(totals.shipping)).toFixed(2);
+        tax.innerText = `Tax Rate - $${totals.tax.toFixed(2)}`;
+        shipping.innerText = `Shipping Rate - ${totals.shipping.toFixed(2)}`;
+
         showToast(`${product.name} added to cart!`)
     });
 
@@ -236,7 +261,7 @@ form.addEventListener('submit', (e) => {
         };
 
         form.reset();
-        formMessage.innerText = `Thank you for your submission, ${customer.name}! We will contact you via ${customer.contactMethod} at ${customer[customer.contactMethod]} regarding your comments: ${customer.comments}.`;
+        showToast(`${JSON.stringify(customer, null, 2)}`)
     }
 });
 
